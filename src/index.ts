@@ -5,10 +5,11 @@ import { createConnection } from 'typeorm';
 import typeDefs from './schema';
 import { resolvers } from './resolvers';
 
-const server = new ApolloServer({ typeDefs, resolvers });
+export const startServer = async () => {
+  const server = new ApolloServer({ typeDefs, resolvers });
+  await createConnection();
+  await server.listen();
+  console.log('Server ready at http://localhost:4000');
+};
 
-createConnection().then(() => {
-  server.listen().then(
-    ({ url }: any) => console.log(`Server ready at ${url}`),
-  );
-});
+startServer();
