@@ -2,10 +2,10 @@ import { request } from 'graphql-request';
 
 import { User } from '../entity/User';
 import { host } from './contants';
-import { createTypeormConn } from '../utils/createTypeornConn';
+import { startServer } from '../startServer';
 
 beforeAll(async () => {
-  await createTypeormConn();
+  await startServer();
 });
 
 const email = 'ccc@gmail.com';
