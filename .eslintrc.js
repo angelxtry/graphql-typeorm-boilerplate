@@ -26,7 +26,11 @@ module.exports = {
     },
   },
   rules: {
-    'import/extensions': ['error', 'ignorePackages', { ts: 'never' }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      { ts: 'never', js: 'never' },
+    ],
     'class-methods-use-this': [0],
     'import/prefer-default-export': [0],
     'no-console': 0,
