@@ -1,8 +1,9 @@
 import { request } from 'graphql-request';
 
-import { User } from '../entity/User';
-import { host } from './contants';
-import { startServer } from '../startServer';
+import { User } from '../../entity/User';
+import { startServer } from '../../startServer';
+
+const host = 'http://localhost:4000/graphql';
 
 beforeAll(async () => {
   await startServer();
