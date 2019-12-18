@@ -1,12 +1,11 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 
-import typeDefs from './schema';
-import { resolvers } from './resolvers';
+import schema from './schema';
 import { createTypeormConn } from './utils/createTypeornConn';
 
 export const startServer = async () => {
-  const server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({ schema });
   const app = express();
   await createTypeormConn();
   server.applyMiddleware({ app });
