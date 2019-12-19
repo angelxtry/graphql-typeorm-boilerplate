@@ -2,8 +2,6 @@ import { request } from 'graphql-request';
 
 import { INVALID_LOGIN, INCORRECT_PASSWORD } from './errorMessage';
 
-const host = 'http://localhost:4000/graphql';
-
 const email = 'aaa@gmail.com';
 const password = 'aaa';
 
@@ -27,7 +25,7 @@ const loginMutation = (e:string, p:string) => `
 
 const loginExpectError = async (e: string, p: string, errorMessage: string) => {
   const response = await request(
-      host as string,
+      process.env.TEST_HOST as string,
       loginMutation(e, p),
   );
   expect(response.login).toEqual([{
@@ -43,7 +41,7 @@ describe('login', () => {
 
   it('test login - invalid password', async () => {
     const response = await request(
-      host as string,
+      process.env.TEST_HOST as string,
       registerMutation(email, password),
     );
     expect(response).toEqual({ register: null });
@@ -52,7 +50,7 @@ describe('login', () => {
 
   it('test log - login seuccess', async () => {
     const response = await request(
-      host as string,
+      process.env.TEST_HOST as string,
       loginMutation(email, password),
     );
     expect(response).toEqual({ login: null });
