@@ -11,7 +11,7 @@ const loginErrorResponse = [{
 
 const resolvers: ResolverMap = {
   Mutation: {
-    login: async (_, args) => {
+    login: async (_, args, { session }) => {
       const { email, password } = args;
       const user = await User.findOne({ where: { email } });
 
@@ -24,6 +24,7 @@ const resolvers: ResolverMap = {
         return loginErrorResponse;
       }
 
+      session.userId = user.id;
       return null;
     },
   },
