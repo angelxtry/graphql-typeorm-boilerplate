@@ -1,5 +1,6 @@
 import { request } from 'graphql-request';
 
+import { Connection } from 'typeorm';
 import { createTypeormConn } from '../../utils/createTypeornConn';
 import { User } from '../../entity/User';
 import {
@@ -8,9 +9,12 @@ import {
   INVALID_EMAIL,
 } from './errorMessages';
 
-
+let conn: Connection;
 beforeAll(async () => {
-  await createTypeormConn();
+  conn = await createTypeormConn();
+});
+afterAll(async () => {
+  await conn.close();
 });
 
 const email = 'ccc@gmail.com';
