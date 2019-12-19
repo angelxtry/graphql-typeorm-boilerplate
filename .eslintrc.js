@@ -35,7 +35,12 @@ module.exports = {
     'class-methods-use-this': [0],
     'import/prefer-default-export': [0],
     'no-console': 0,
-    'import/no-extraneous-dependencies': 0
+    'import/no-extraneous-dependencies': 0,
+    'max-len': ["error", { "code": 80 }],
+    'no-param-reassign': ["error", {
+      props: true,
+      ignorePropertyModificationsFor: ['req', 'request', 'session']
+    }],
   },
   overrides: [
     {
