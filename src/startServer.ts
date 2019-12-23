@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import session from 'express-session';
@@ -44,7 +45,7 @@ export const startServer = async () => {
     cors,
   });
 
-  app.listen({ port: 3000 }, () => {
+  app.listen({ port: 4000 }, () => {
     console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
   });
 };

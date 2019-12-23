@@ -8,3 +8,6 @@ temp/
 # typeorm config
 ormconfig.json
 ormconfig.ts
+
+# dotenv
+.env
